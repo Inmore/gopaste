@@ -1,0 +1,4 @@
+gopaste.exe
+*.out
+vendor/
+
