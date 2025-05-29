@@ -1,4 +1,4 @@
-gopaste.exe
+*.exe
 *.out
 vendor/
 
