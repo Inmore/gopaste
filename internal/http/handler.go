@@ -34,6 +34,7 @@ type createReq struct {
 	TTL     int    `json:"ttl_seconds"`
 }
 
+// @Summary Create paste
 func (s *Server) createPaste(w http.ResponseWriter, r *http.Request) {
 	var req createReq
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
@@ -58,6 +59,7 @@ func (s *Server) createPaste(w http.ResponseWriter, r *http.Request) {
 	_ = json.NewEncoder(w).Encode(resp)
 }
 
+// @Summary Get paste
 func (s *Server) getPaste(w http.ResponseWriter, r *http.Request) {
 	id := chi.URLParam(r, "id")
 	p, err := s.st.Load(id)
@@ -68,6 +70,7 @@ func (s *Server) getPaste(w http.ResponseWriter, r *http.Request) {
 	_ = json.NewEncoder(w).Encode(p)
 }
 
+// @Summary Health
 func (s *Server) health(w http.ResponseWriter, _ *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	_, _ = w.Write([]byte("ok"))
